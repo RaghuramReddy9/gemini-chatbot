@@ -1,7 +1,10 @@
 import streamlit as st
 from modules.gemini_utils import get_gemini_reply
 
+# Set page layout
 st.set_page_config(page_title="Ram Intelligent", page_icon="🧠", layout="centered")
+
+# Header
 st.markdown("""
     <h1 style='text-align: center; color: #4ade80;'>Ram Intelligent</h1>
     <p style='text-align: center; font-size: 18px;'>Your Smart Gemini AI Assistant</p>
@@ -20,8 +23,8 @@ if st.button("🗑️ Clear Chat"):
     st.session_state.chat_history = []
     st.experimental_rerun()
 
-# Process input
-if user_input:
+# Only run Gemini if user types something
+if user_input.strip() != "":
     st.session_state.chat_history.append({"role": "user", "text": user_input})
     with st.spinner("Thinking..."):
         try:
@@ -32,7 +35,11 @@ if user_input:
 
         except Exception as e:
             reply = f"❌ Error: Something went wrong.\n\nDetails: {e}"
+
         st.session_state.chat_history.append({"role": "assistant", "text": reply})
+
+elif user_input != "":
+    st.warning("⚠️ Please type a question before pressing Enter.")
 
 # Display chat
 for msg in st.session_state.chat_history:
