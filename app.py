@@ -24,8 +24,15 @@ if st.button("🗑️ Clear Chat"):
 if user_input:
     st.session_state.chat_history.append({"role": "user", "text": user_input})
     with st.spinner("Thinking..."):
-        reply = get_gemini_reply(user_input)
-    st.session_state.chat_history.append({"role": "assistant", "text": reply})
+        try:
+            reply = get_gemini_reply(user_input)
+
+            if not reply or reply.strip() == "":
+                reply = "⚠️ Gemini didn’t return any answer. Try rephrasing your question."
+
+        except Exception as e:
+            reply = f"❌ Error: Something went wrong.\n\nDetails: {e}"
+        st.session_state.chat_history.append({"role": "assistant", "text": reply})
 
 # Display chat
 for msg in st.session_state.chat_history:
