@@ -1,22 +1,27 @@
-# 🤖 Gemini Chatbot
+# Gemini Chatbot – ChatGPT Style (Built with Google Gemini 1.5 Flash)
 
-A simple chatbot powered by Google Gemini 1.5 Flash API and Streamlit.
+Welcome to my Generative AI project powered by **Google Gemini** and deployed with **Streamlit**.
 
----
+## 🌟 Features
 
-## 🛠️ How to Run
-
-1. **Install dependencies**  
-
-2. **Set your Gemini API key**  
-Open `modules/gemini_utils.py` and replace `"YOUR_API_KEY"` with your own.
-
-3. **Start the app**  
-
----
+-  Powered by `gemini-1.5-flash`
+-  Chat memory using `st.session_state`
+-  Clean ChatGPT-style UI
+-  Backend logic neatly stored in `modules/`
+-  Deployed via Streamlit Cloud
 
 ## 📸 Screenshot
 
-Place your app screenshot in `assets/screenshot.png` and it will show here:
+![Chatbot Screenshot](assets/screenshot.png)
 
-![App Screenshot](assets/screenshot.png)
+# Technologies Used
+
+- `streamlit`
+- `google-generativeai`
+- Python 3.10+
+
+# Run Locally
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
